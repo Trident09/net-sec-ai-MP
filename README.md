@@ -46,6 +46,20 @@ traffic-prediction-project/
    - This folder contains the **Streamlit app** (`app.py`), which is the interface where users can upload CSV files containing traffic data. The app uses the trained model (`trained_model.pkl`) and the scaler (`scaler.pkl`) to predict labels and display prediction probabilities.
    - The app shows the uploaded data and the predictions in real-time, including the predicted labels and the probability for each class.
 
+## Technologies Used
+- **Python**: The primary programming language used for this project.
+- **Pandas**: For data manipulation and analysis.
+- **NumPy**: For numerical computations and array operations.
+- **Scikit-learn**: For machine learning models and preprocessing.
+- **Joblib**: For saving and loading the trained model.
+- **Streamlit**: For building the web application for predictions.
+- **Google Colab/Jupyter Notebooks**: For data preprocessing, feature engineering, and model training
+- **Matplotlib/Seaborn**: For data visualization
+
+## Presentation
+
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGXzGEtAIw&#x2F;s2H8wPDRKJofjz-34z51vQ&#x2F;view?utm_content=DAGXzGEtAIw&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Improve-Network-Security-with-Artificial-Intelligence</a> by Rupam Barui
+
 ## How to Set Up the Project
 
 ### 1. Clone the Repository
