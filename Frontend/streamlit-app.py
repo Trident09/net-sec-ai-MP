@@ -11,9 +11,10 @@ def download_model(url, local_path):
         response.raise_for_status()  # Ensure successful download
         with open(local_path, 'wb') as f:
             f.write(response.content)
-        st.write(f"Model downloaded to {local_path}")
+        # st.write(f"Model downloaded to {local_path}")
     else:
-        st.write(f"Model already exists at {local_path}")
+        # st.write(f"Model already exists at {local_path}")
+        pass
 
 # Set model URL and local path
 model_url = "https://raw.githubusercontent.com/Trident09/net-sec-ai-MP/b1aff8fd96776446ae8b5fe959cd5adf7eb65f5c/Frontend/trained_model-neuralnetwork.keras"
