@@ -14,8 +14,8 @@ def download_model(url, local_path):
             f.write(response.content)
 
 # Load the trained model
-model_url = "https://raw.githubusercontent.com/Trident09/net-sec-ai-MP/e81411df26baf2fa0d731d276d93f973b5cee72d/Frontend/trained_model.pkl"
-model_path = "trained_model.pkl"
+model_url = "https://raw.githubusercontent.com/Trident09/net-sec-ai-MP/e81411df26baf2fa0d731d276d93f973b5cee72d/Frontend/trained_model-randomforest.pkl"
+model_path = "trained_model-randomforest.pkl"
 download_model(model_url, model_path)
 model = joblib.load(model_path)
 
