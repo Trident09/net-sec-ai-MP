@@ -46,6 +46,15 @@ if uploaded_file is not None:
         
         # Display predictions
         st.write("### Predictions")
-        st.write(predictions)
+        st.dataframe(df[['Prediction']])
+        
+        # Downloadable result
+        csv = df.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download Predictions as CSV",
+            data=csv,
+            file_name="predictions.csv",
+            mime="text/csv",
+        )
     except Exception as e:
         st.error(f"An error occurred: {e}")
