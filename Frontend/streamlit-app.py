@@ -12,7 +12,7 @@ def download_model(url, local_path):
             f.write(response.content)
 
 # Load the trained model
-model_url = "https://raw.githubusercontent.com/Trident09/net-sec-ai-MP/e81411df26baf2fa0d731d276d93f973b5cee72d/Frontend/trained_model-neuralnetwork.keras"
+model_url = "https://github.com/Trident09/net-sec-ai-MP/blob/b1aff8fd96776446ae8b5fe959cd5adf7eb65f5c/Frontend/trained_model-neuralnetwork.keras"
 model_path = "trained_model-neuralnetwork.keras"
 download_model(model_url, model_path)
 model = tf.keras.models.load_model(model_path)
