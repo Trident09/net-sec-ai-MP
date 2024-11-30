@@ -35,7 +35,7 @@ prediction_labels = ["Benign", "DDoS"]
 st.set_page_config(
     page_title="Traffic Prediction App",
     page_icon="🌐",
-    layout="wide",
+    # layout="wide",
     initial_sidebar_state="expanded",
 )
 
