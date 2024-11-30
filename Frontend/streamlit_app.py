@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 import joblib
-model = joblib.load('trained_model.pkl')
+model = joblib.load('https://github.com/Trident09/net-sec-ai-MP/raw/refs/heads/main/Frontend/trained_model.pkl')
 
 # Function to load and preprocess the CSV file
 def preprocess_data(csv_file):
