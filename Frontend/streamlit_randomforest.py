@@ -22,10 +22,8 @@ model = joblib.load(model_path)
 # Function to load and preprocess the CSV file
 def preprocess_data(csv_file):
     df = pd.read_csv(csv_file)
-    df = df.drop(columns=['Label'], errors='ignore')  # Drop 'Label' column if present
-    scaler = StandardScaler()
-    df_scaled = scaler.fit_transform(df)
-    return df, df_scaled
+    df = df.drop(columns=['Label'], errors='ignore')  # Drop 
+    return df
 
 # Streamlit app
 st.title('Traffic Prediction App')
@@ -34,15 +32,15 @@ uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
 if uploaded_file is not None:
     try:
         # Preprocess the CSV data
-        original_data, processed_data = preprocess_data(uploaded_file)
+        original_data = preprocess_data(uploaded_file)
         
         # Display the original data
         st.write("### Given Data (Uploaded CSV)")
         st.dataframe(original_data)
         
         # Make predictions
-        predictions = model.predict(processed_data)
-        prediction_probs = model.predict_proba(processed_data)
+        predictions = model.predict(original_data)
+        prediction_probs = model.predict_proba(original_data)
         
         # Display predictions
         st.write("### Predictions")
