@@ -1,43 +1,51 @@
 # **Training Scripts Subfolder**
 
-This folder contains all necessary files and scripts to train the machine learning model for the project.
+This folder contains all necessary files and scripts to train a neural network model for the project.
+
+---
 
 ## **Contents**
-1. **`train.py`**  
-   The main script for training the machine learning model. It includes:
-   - Data preprocessing
-   - Model initialization
-   - Training and evaluation
+
+1. **`train_neural_network.py`**  
+   The main script for training the neural network model. It includes:
+   - Data loading from multiple CSV files
+   - Data exploration and preprocessing
+   - Neural network training using TensorFlow and Keras
+   - Model evaluation and visualization
    - Saving the trained model for future use
 
 2. **Dependencies**  
-   The following Python libraries are required to run the training script:
-   - `pandas`: For data manipulation
+   The following Python libraries are required:
+   - `pandas`: For data loading and manipulation
    - `numpy`: For numerical computations
-   - `scikit-learn`: For machine learning models and utilities
-   - `joblib`: For saving and loading models
+   - `scikit-learn`: For preprocessing, encoding, and splitting the data
+   - `tensorflow`: For building and training the neural network
+   - `matplotlib` and `seaborn`: For data and result visualization
+   - `logging`: For runtime logs and debugging
 
 3. **Expected Input**  
-   The script expects the dataset in a specific format (e.g., CSV). Please ensure the input data meets the following criteria:
-   - File format: `.csv`
-   - Contains the necessary features and target labels as defined in the script.
+   The script expects a directory containing CSV files. Each file should have the necessary features and target labels. Ensure the data meets these requirements:
+   - **File format**: `.csv`
+   - **Features and Labels**: Clearly defined columns for predictors and target variables
+   - **Missing values**: Handled within the script, but clean data is recommended
 
 4. **Output**  
    The training script produces:
-   - A trained model saved as a `.joblib` file.
-   - Performance metrics displayed in the console (e.g., accuracy, precision, recall, confusion matrix).
+   - A trained model saved as a `.keras` file
+   - Visualizations of training and validation accuracy/loss
+   - A confusion matrix for evaluating classification performance
 
 ---
 
 ## **Setup**
 
 ### **Step 1: Install Dependencies**
-Make sure you have Python installed (preferably Python 3.8 or later). Install the required libraries using `pip`:
+Ensure Python 3.8 or later is installed. Install the required libraries:
 ```bash
-pip install pandas numpy scikit-learn joblib
+pip install pandas numpy scikit-learn tensorflow matplotlib seaborn
 ```
 
-If you're using a virtual environment, activate it and then install the dependencies:
+For a virtual environment:
 ```bash
 # Create and activate a virtual environment (optional)
 python -m venv venv
@@ -45,54 +53,59 @@ source venv/bin/activate       # On macOS/Linux
 venv\Scripts\activate          # On Windows
 
 # Install dependencies
-pip install pandas numpy scikit-learn joblib
+pip install pandas numpy scikit-learn tensorflow matplotlib seaborn
 ```
 
-### **Step 2: Place the Dataset**
-Ensure your dataset is available in the expected format and location. By default, the script looks for a dataset file (e.g., `data.csv`) in the same directory. Update the script to reflect the dataset path if it is stored elsewhere.
+### **Step 2: Prepare the Dataset**
+- Place all CSV files containing the dataset in a single directory.
+- Ensure the directory path is correctly specified in the script (default: `/content/drive/MyDrive/Colab Notebooks/Files/`).
 
 ---
 
 ## **How to Run the Script**
 
-Run the training script using the following command:
-```bash
-python train.py --data_path <path_to_your_dataset>
-```
+Click play on the code cell in the `Network_minor_neuralnetwork.ipynb` notebook to run the training script.
 
 ### **Optional Arguments**
-- `--data_path`: Path to the dataset file (default: `data.csv`)
-- Additional arguments can be added as needed and updated in this section.
+- `--data_dir`: Path to the directory containing CSV files (default: `/content/drive/MyDrive/Colab Notebooks/Files/`).
 
 ---
 
 ## **File Descriptions**
-- **`train.py`**: Contains the full training pipeline, including preprocessing, model training, and evaluation.
-- **`<output_model.joblib>`**: The trained model, saved after running the script.
-- **`<log_files>`** (if applicable): Any logs or outputs generated during the training process.
+
+- **`Network_minor_neuralnetwork.ipynb`**:  
+  Contains the complete pipeline for loading data, preprocessing, building, training, and evaluating a neural network.
+- **`trained_model-neuralnetwork.keras`**:  
+  Saved neural network model for reuse.
+- **`logs`** (optional):  
+  Contains runtime logs if logging is enabled.
 
 ---
 
 ## **Troubleshooting**
 
 ### **Common Errors**
-1. **Library Not Found:**  
-   Ensure all required libraries are installed:
+1. **Missing Dependencies**:  
+   Ensure required libraries are installed:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Dataset Issues:**  
-   Verify the dataset file exists and is formatted correctly. Update the script's `data_path` argument if necessary.
+2. **No CSV Files Found**:  
+   Verify the directory contains CSV files and the path is correctly specified.
+
+3. **Invalid Data Format**:  
+   Check that CSV files have the required features and target labels. Ensure column names are consistent.
 
 ### **Debugging**
-For debugging, use print statements or a debugger like `pdb` to trace errors in the script.
+Use the `logging` module to trace the script's execution. Errors and exceptions are logged to the console.
 
 ---
 
 ## **Future Enhancements**
-- Add support for additional model architectures.
-- Include hyperparameter tuning using tools like `GridSearchCV`.
-- Extend the script to log metrics to a file or dashboard.
+1. Add hyperparameter tuning support using tools like `Keras Tuner`.
+2. Enable logging of training metrics to a file or dashboard (e.g., TensorBoard).
+3. Expand support for multi-label or multi-class classification tasks.
+4. Provide options for model architecture customization.
 
 ---

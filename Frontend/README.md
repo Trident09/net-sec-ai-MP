@@ -1,17 +1,22 @@
-# Traffic Prediction App
+# Traffic Prediction App 🌐
 
-This is a **Streamlit web application** that allows users to upload a CSV file containing traffic data, preprocess it, and make predictions using a trained machine learning model. The app displays the input data along with the predicted labels and prediction probabilities (True/False) based on the model's output.
+This is a **Streamlit web application** that allows users to upload a CSV file containing traffic data, preprocess it, and make predictions using a pre-trained neural network model. The app categorizes network traffic as **Benign** or **DDoS** based on the model's output and displays user-friendly prediction results.
 
-![Traffic Prediction App](https://i.imgur.com/vUSsa2O.png)
+![Traffic Prediction App](https://i.imgur.com/cx0crtQ.png)
+
+---
 
 ## Features
 
-- Upload a CSV file containing traffic data.
-- Preprocess the input data (scaling the features).
-- Make predictions using a pre-trained machine learning model.
-- Display the original uploaded CSV data.
-- Show the predicted labels (True/False).
-- Show prediction probabilities for each class (True/False).
+- **Upload CSV Files**: Supports uploading traffic datasets in CSV format.
+- **Preprocessing**: Automatically drops unnecessary columns like `Label` and prepares the data for prediction.
+- **Predictions**: Uses a neural network model to classify traffic as **Benign** or **DDoS**.
+- **Interactive Data Display**:
+  - View uploaded data directly in the app.
+  - See predictions alongside the original dataset.
+- **Download Results**: Provides an option to download the predictions as a CSV file.
+
+---
 
 ## Requirements
 
@@ -19,83 +24,77 @@ This is a **Streamlit web application** that allows users to upload a CSV file c
 - Streamlit
 - pandas
 - numpy
-- scikit-learn
-- joblib
+- TensorFlow
+- requests
+
+---
 
 ## Setup Instructions
 
-1. **Clone the repository** or download the project files.
+1. **Clone the Repository**
+
+2. **Navigate to the Project Directory**:
 
    ```bash
-   git clone https://github.com/yourusername/traffic-prediction-app.git
+   cd Frontend
    ```
 
-2. **Create a virtual environment** (optional but recommended):
+3. **Create a Virtual Environment** (optional but recommended):
 
    ```bash
    python -m venv venv
    ```
 
-3. **Activate the virtual environment**:
+4. **Activate the Virtual Environment**:
 
    - On Windows:
-
      ```bash
      venv\Scripts\activate
      ```
-
    - On macOS/Linux:
-
      ```bash
      source venv/bin/activate
      ```
 
-4. **Install required dependencies**:
+5. **Install Dependencies**:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-   If you don’t have a `requirements.txt` file, install the required packages individually:
+6. **Download the Pre-trained Model**:
 
-   ```bash
-   pip install streamlit pandas numpy scikit-learn joblib
-   ```
+   The app automatically downloads the pre-trained neural network model (`trained_model-neuralnetwork.keras`) when you run it for the first time.
 
-5. **Ensure you have the trained model** (`trained_model.pkl`) placed in the project directory. This file should contain the pre-trained model used for predictions.
-
-6. **Run the Streamlit app**:
+7. **Run the App**:
 
    ```bash
    streamlit run app.py
    ```
 
-   Replace `app.py` with the filename of your Streamlit script if different.
+---
 
 ## Usage
 
-Once the app is running:
+1. **Upload a CSV File**:
+   - The CSV file should contain traffic data features.
+   - The `Label` column (if present) will be ignored.
 
-1. **Upload a CSV file**: 
-   - The app will prompt you to upload a CSV file containing traffic data.
-   - The CSV should have multiple columns representing traffic features. The column names should match those that the model was trained on.
+2. **View Uploaded Data**:
+   - Once uploaded, the app displays the dataset for review.
 
-2. **See the uploaded data**: 
-   - After uploading, the app will display the original CSV data in a table so you can verify the input.
+3. **Get Predictions**:
+   - The app predicts whether the traffic is **Benign** or **DDoS**.
+   - Predictions are displayed in the app alongside the input data.
 
-3. **View Predictions**: 
-   - The model will predict labels (True/False) based on the uploaded data and display them in a table.
-   - You will also see prediction probabilities for both classes (True/False).
+4. **Download Results**:
+   - Export the predictions as a CSV file for further analysis.
 
-### Sample Output
+---
 
-- **Input Data (Uploaded CSV)**: A table showing the traffic features from the uploaded CSV file.
-- **Predicted Labels**: A list showing whether the prediction for each data point is `True` or `False`.
-- **Prediction Probabilities (True/False)**: A table displaying the probability for each class, where `True` is the predicted label and `False` is the alternative.
+### Example CSV Format
 
-### Example CSV Data Format:
-
-The CSV file should have the following structure (with traffic-related features):
+The input CSV should have a structure like this:
 
 | Destination Port | Flow Duration | Total Fwd Packets | Total Backward Packets | ... |
 |------------------|---------------|-------------------|------------------------|-----|
@@ -103,23 +102,31 @@ The CSV file should have the following structure (with traffic-related features)
 | 443              | 2000          | 40                | 50                     | ... |
 | 21               | 1000          | 15                | 20                     | ... |
 
-### Output Example:
+---
 
-| False Probability | True Probability | Predicted Label |
-|-------------------|------------------|-----------------|
-| 0.18              | 0.82             | True            |
-| 0.09              | 0.91             | True            |
-| 0.08              | 0.92             | True            |
+## Sample Output
 
-## Model
+| Prediction       | Probability (Benign) | Probability (DDoS) |
+|------------------|-----------------------|---------------------|
+| Benign           | 0.91                 | 0.09                |
+| DDoS             | 0.02                 | 0.98                |
+| Benign           | 0.87                 | 0.13                |
 
-This app uses a pre-trained model to make predictions based on traffic data. The model expects the input features to be in the same format and scale as the data used for training. The model is loaded using the `joblib` library from the file `trained_model.pkl`.
+---
+
+## Model Details
+
+The app uses a pre-trained neural network model stored as `trained_model-neuralnetwork.keras`. It is downloaded directly from a remote repository during runtime if not already available locally.
+
+---
 
 ## Troubleshooting
 
-- **CSV Format Errors**: Ensure that the uploaded CSV matches the format and feature columns expected by the model. If the CSV contains the `Label` column, it will be dropped automatically.
-- **Model Errors**: If you encounter issues related to the model's predictions, verify that the model file (`trained_model.pkl`) is correctly placed in the project directory.
+- **CSV Format Issues**: Ensure the uploaded file has the correct structure and contains valid traffic feature columns. Columns unrelated to the model's input are ignored automatically.
+- **Model Loading Issues**: If the app cannot download the model, verify the URL in the code or check your internet connection.
+
+---
 
 ## License
 
-This project is open-source and licensed under the [MIT License](../LICENSE).
+This project is licensed under the [MIT License](../LICENSE).
