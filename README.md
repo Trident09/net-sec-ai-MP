@@ -18,7 +18,7 @@ The goal of this project is to predict traffic patterns (either "True" or "False
 ```plaintext
 traffic-prediction-project/
 ├── Dataset/
-│   ├── CICIDS_2023_traffic_data.csv      # Network traffic dataset
+│   ├── CICIDS_2017_traffic_data.csv      # Network traffic dataset
 │   ├── ...                               # Other data files
 │
 ├── Frontend/
